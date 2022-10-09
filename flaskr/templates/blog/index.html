@@ -1,0 +1,87 @@
+{% extends 'blog/base.html' %}
+
+{% block main %}
+    {% if g.user %}
+  <div class="container-xxl flex-grow-1 container-p-y">
+      <a href="{{ url_for('blog.create') }}"  type="button" class="btn rounded-pill btn-primary">New Blog</a>
+{% endif %}
+  <p></p>
+
+    <div class="row mb-5">
+      {% for post in posts %}
+        <div class="col-md-6 col-lg-4">
+
+        <div class="card">
+          <img class="card-img-top" src="{{ url_for('static', filename='assets/img/elements/7.jpg') }}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{ post['title'] }}</h5>
+            <p class="card-text">{{ post['body'] }}</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">By {{ post['username'] }}</li>
+            <li class="list-group-item">{{ post['created'].strftime('%Y-%m-%d') }}</li>
+          </ul>
+
+          <div class="card-body">
+
+
+
+
+
+          {% for star in stars %}
+
+            {% if star['post_id'] == post['id'] %}
+            {{ star['kfklkdl'] }}
+
+            {% endif %}
+              {% endfor %}
+          {% set vars = {'foo': False} %}
+
+          {% for star2 in stars2 %}
+
+
+            {% if star2['post_id'] == post['id']%}
+
+
+                {% set number = g.user['id'] | int %}
+                {% set number2 = star2['user_id'] | int %}
+                {% if number == number2 %}
+                {% if vars.update({'foo': True}) %} {% endif %}
+
+                {% endif %}
+{% endif %}
+{% endfor %}
+
+
+
+
+
+
+
+
+
+            {% if vars.foo %}
+            <a href="{{ url_for('blog.star', id=post['id']) }}"  type="button" class="btn rounded-pill btn-primary">Unstar</a>
+            {% else %}
+                <a href="{{ url_for('blog.star', id=post['id']) }}"  type="button" class="btn rounded-pill btn-primary">Star</a>
+            {% endif %}
+
+
+
+
+
+
+
+            {% if g.user['id'] == post['author_id'] %}
+              <a href="{{ url_for('blog.update', id=post['id']) }}" class="card-link">Edit</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <!--/ Content types -->
+
+  </div>
+
+{% endblock %}

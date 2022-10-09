@@ -1,0 +1,51 @@
+{% extends 'blog/base.html' %}
+
+{% block header %}
+  <h1>{% block title %}New Post{% endblock %}</h1>
+{% endblock %}
+
+
+{% block main %}
+      <form method="post">
+    <div class="content-wrapper">
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms /</span> Input groups</h4>
+
+              <div class="row">
+                <!-- Basic -->
+                <div class="col-md-6">
+                  <div class="card mb-4">
+
+                    <div class="card-body demo-vertical-spacing demo-only-element">
+                      <div class="input-group">
+
+                        <input name="title" type="text" id="title" class="form-control" aria-label="title" aria-describedby="basic-addon11" value="{{ request.form['title'] }}">
+                      </div>
+
+
+
+                      <div class="input-group">
+
+                        <textarea name="body" id="body" class="form-control" aria-label="body" >{{ request.form['body'] }}</textarea>
+
+                      </div>
+                        <button type="submit" class="btn btn-primary" >
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;"><path d="M5 21h14a2 2 0 0 0 2-2V8a1 1 0 0 0-.29-.71l-4-4A1 1 0 0 0 16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2zm10-2H9v-5h6zM13 7h-2V5h2zM5 5h2v4h8V5h.59L19 8.41V19h-2v-5a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v5H5z"></path></svg> <span class="tf-icons "></span>&nbsp; Save
+                            </button>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+
+
+            <div class="content-backdrop fade"></div>
+          </div>
+        </div>
+    </div>
+  </form>
+{% endblock %}
